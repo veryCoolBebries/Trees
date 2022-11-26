@@ -8,16 +8,22 @@ Node::Node(int data) {
 }
 
 int main() {
+	srand(time(NULL));
 	Tree* tree = new Tree;
 	tree->root = insert(tree, 0);
 	int hui[] = { 1,2,3,4,5,6 };
 	for (size_t i = 0; i < 6; i++)
 	{
-		insert(tree, rand() % (10*(i+1)));
+		//insert(tree, rand() % (10*(i+1)));
+		insert(tree, hui[i]); 
 	}
-	
-	
+	std::cout << "Size: " << getSize(tree->root) << std::endl;
+	Node* huinya = insert(tree, 10);
 	symmetricOrder(tree->root);
+	deleteElement(tree->root, 10);
+	std::cout << '/' << huinya->data << '/' << std::endl;
+	symmetricOrder(tree->root);
+	std::cout << "Height of tree: " << getHeight(tree->root) << std::endl;
 }
 
 Node* randomInsert(Node* previous, int data, Tree* tree)
@@ -95,4 +101,67 @@ Node* insert(Tree* tree, int data)
 {
 
 	return randomInsert(tree->root, data, tree);
+}
+
+Node* findMinElement(Node* root)
+{
+	Node* current = root;
+	while (current->left) {
+		current = current->left;
+	}
+	return current;
+}
+
+Node* deleteElement(Node* current, int data)
+{
+	if (current->data == data) {
+		if (current->left == 0 && current->right == 0) {
+			delete current;
+			return NULL;
+		}
+		if (current->left == 0) return current->right;
+		if (current->right == 0) return current->left;
+		Node* minElementInRightSubtree = findMinElement(current->right);
+		current->data = minElementInRightSubtree->data;
+		current->right = deleteElement(current->right, minElementInRightSubtree->data);
+		return current;
+	}
+	if (data < current->data) {
+		if (current->left == 0) {
+			throw std::exception("Element not found!");
+			return current;
+		}
+		current->left = deleteElement(current->left, data);
+		return current;
+	}
+	if (data > current->data) {
+		if (current->right == 0) {
+			throw std::exception("Element not found!");
+			return current;
+		}
+		current->right = deleteElement(current->right, data);
+		return current;
+	}
+
+}
+
+Node* find(Node* root, int data)
+{
+	Node* current = root;
+	while (current) {
+		if (data == current->data) return current;
+		if (data < current->data) current = current->left;
+		if (data > current->data) current = current->right;
+	}
+	return NULL;
+}
+
+int getHeight(Node* root)
+{
+	if (root == 0) return 0;
+	else {
+		int right = getHeight(root->right);
+		int left = getHeight(root->left);
+		return 1 + (right > left ? right : left);
+	};
 }

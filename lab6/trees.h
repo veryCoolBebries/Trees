@@ -17,3 +17,8 @@ Node* rotateLeft(Node* previous);
 Node* rotateRight(Node* previous);
 void symmetricOrder(Node* root);
 Node* insert(Tree* root, int data);
+Node* findMinElement(Node* root);
+Node* deleteElement(Node* current, int data);
+Node* find(Node* root, int data);
+int getHeight(Node* root);
+int getSumPathsToEvenNodes(Node* node);
