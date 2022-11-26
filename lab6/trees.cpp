@@ -24,6 +24,7 @@ int main() {
 	std::cout << '/' << huinya->data << '/' << std::endl;
 	symmetricOrder(tree->root);
 	std::cout << "Height of tree: " << getHeight(tree->root) << std::endl;
+	std::cout << "Sum of paths to even node: " << getSumPathsToEvenNodes(tree);
 }
 
 Node* randomInsert(Node* previous, int data, Tree* tree)
@@ -99,7 +100,6 @@ void symmetricOrder(Node* root)
 
 Node* insert(Tree* tree, int data)
 {
-
 	return randomInsert(tree->root, data, tree);
 }
 
@@ -165,3 +165,18 @@ int getHeight(Node* root)
 		return 1 + (right > left ? right : left);
 	};
 }
+int _getSumPathsToEvenNodes(Node* node, int &sum, Tree* tree)
+{
+	if (!node) return sum;
+	if (node->data % 2 == 0) sum += getHeight(tree->root) - getHeight(node);
+	_getSumPathsToEvenNodes(node->left, sum, tree);
+	_getSumPathsToEvenNodes(node->right, sum, tree);
+	return sum;
+}
+int getSumPathsToEvenNodes(Tree* tree)
+{
+	if (!tree) return 0;
+	int sum = 0;
+	_getSumPathsToEvenNodes(tree->root, sum, tree);
+}
+

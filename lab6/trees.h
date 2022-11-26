@@ -21,4 +21,4 @@ Node* findMinElement(Node* root);
 Node* deleteElement(Node* current, int data);
 Node* find(Node* root, int data);
 int getHeight(Node* root);
-int getSumPathsToEvenNodes(Node* node);
+int getSumPathsToEvenNodes(Tree* tree);
