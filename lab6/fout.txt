@@ -1,0 +1,1 @@
+Sum of paths to even node: 11Height of tree: 4
