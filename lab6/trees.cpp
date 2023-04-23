@@ -6,70 +6,30 @@ Node::Node(int data) {
 	this->data = data;
 	size = 1;
 }
-//случайная вставка в дерево
+//СЃР»СѓС‡Р°Р№РЅР°СЏ РІСЃС‚Р°РІРєР° РІ РґРµСЂРµРІРѕ
 Node* _randomInsert(Node* previous, int data, Tree* tree = 0);
-//пересчёт размера узла
+//РїРµСЂРµСЃС‡С‘С‚ СЂР°Р·РјРµСЂР° СѓР·Р»Р°
 int _fixSize(Node* previous);
-//вставка узла в корень
+//РІСЃС‚Р°РІРєР° СѓР·Р»Р° РІ РєРѕСЂРµРЅСЊ
 Node* _insertRoot(Node* previous, int data);
-//поворот влево вокруг узла
+//РїРѕРІРѕСЂРѕС‚ РІР»РµРІРѕ РІРѕРєСЂСѓРі СѓР·Р»Р°
 Node* _rotateLeft(Node* previous);
-//поворот вправо вокруг узла
+//РїРѕРІРѕСЂРѕС‚ РІРїСЂР°РІРѕ РІРѕРєСЂСѓРі СѓР·Р»Р°
 Node* _rotateRight(Node* previous);
-//поиск минимального элемента в поддереве узла
+//РїРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РїРѕРґРґРµСЂРµРІРµ СѓР·Р»Р°
 Node* _findMinElement(Node* root);
-//получение размера узла
+//РїРѕР»СѓС‡РµРЅРёРµ СЂР°Р·РјРµСЂР° СѓР·Р»Р°
 int _getSize(Node* previous);
-//симметричный обход дерева
+//СЃРёРјРјРµС‚СЂРёС‡РЅС‹Р№ РѕР±С…РѕРґ РґРµСЂРµРІР°
 void _symmetricOrder(Node* root);
-//удаление узла дерева
+//СѓРґР°Р»РµРЅРёРµ СѓР·Р»Р° РґРµСЂРµРІР°
 Node* _deleteElement(Node* current, int data, Tree * tree);
-//получение высоты поддерева узла
+//РїРѕР»СѓС‡РµРЅРёРµ РІС‹СЃРѕС‚С‹ РїРѕРґРґРµСЂРµРІР° СѓР·Р»Р°
 int _getHeight(Node* root);
-//поиск элемента по значению в поддереве узла
+//РїРѕРёСЃРє СЌР»РµРјРµРЅС‚Р° РїРѕ Р·РЅР°С‡РµРЅРёСЋ РІ РїРѕРґРґРµСЂРµРІРµ СѓР·Р»Р°
 Node* _find(Node* root, int data);
-//получение суммы путей от узла до всех четных узлов его поддерева
+//РїРѕР»СѓС‡РµРЅРёРµ СЃСѓРјРјС‹ РїСѓС‚РµР№ РѕС‚ СѓР·Р»Р° РґРѕ РІСЃРµС… С‡РµС‚РЅС‹С… СѓР·Р»РѕРІ РµРіРѕ РїРѕРґРґРµСЂРµРІР°
 int _getSumPathsToEvenNodes(Node* node, int& sum, Tree* tree);
-//int main() {
-//	srand(time(NULL));
-//	
-//	Tree tree;
-//	try
-//	{
-//		insert(tree, 0);
-//		insert(tree, 0);
-//	}
-//	catch (const std::exception& ex)
-//	{
-//		std::cout << ex.what();
-//	}
-//	
-//	int hui[] = { 1,2,3,4,5,6 };
-//	for (size_t i = 0; i < 6; i++)
-//	{
-//		//insert(tree, rand() % (10*(i+1)));
-//		insert(tree, hui[i]); 
-//	}
-//	for (size_t i = 0; i < 7; i++)
-//	{
-//		//insert(tree, rand() % (10*(i+1)));
-//		//insert(tree, hui[i]);
-//		deleteElement(tree, i);
-//	}
-//	std::cout << "Size: " << getSize(tree) << std::endl;
-//	//Node* huinya = insert(tree, 10);
-//	symmetricOrder(tree);
-//	try {
-//		deleteElement(tree, 0);
-//	}
-//	catch(std::exception & ex) {
-//		std::cout << ex.what();
-//	}
-//	/*std::cout << '/' << huinya->data << '/' << std::endl;*/
-//	symmetricOrder(tree);
-//	std::cout << "Height of tree: " << getHeight(tree) << std::endl;
-//	std::cout << "Sum of paths to even node: " << getSumPathsToEvenNodes(tree);
-//}
 
 int getSize(const Tree tree)
 {
